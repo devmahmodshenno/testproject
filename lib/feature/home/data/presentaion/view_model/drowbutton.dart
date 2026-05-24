@@ -28,13 +28,13 @@ class _CustomDrawButtonState extends State<CustomDrawButton> {
           borderSide: BorderSide(color: Colors.grey),
         ),
       ),
-      width: 180,
+      width: 176,
       menuStyle: MenuStyle(
         minimumSize: WidgetStatePropertyAll(
-          Size(180, 0),
+          Size(176, 0),
         ),
         maximumSize: WidgetStatePropertyAll(
-          Size(180, 300),
+          Size(176, 300),
         ),
         backgroundColor: WidgetStatePropertyAll(Colors.white),
         shape: WidgetStatePropertyAll(

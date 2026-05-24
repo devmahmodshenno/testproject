@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:testuiproject/constans.dart';
 import 'package:testuiproject/core/assetsdata.dart';
 import 'package:testuiproject/feature/home/data/presentaion/view_model/custom_card_widget.dart';
@@ -28,25 +27,32 @@ class _HomeBodyState extends State<HomeBody> {
   // ListView builder
   List<Map<String, String>> products = [
     {
-      "imagePath": Assetsdata.product1,
-      "title": "Pastart طين إسباني طبيعي 10 كجم",
+      "imagePath": Assetsdata.product2,
+      "title": "طلاء خرافي Calcitgelb 9318",
       "description": "ألوان خزرف قليز",
       "price": "119.00 ر.س",
-      "availability": "متوفر : 1"
+      "availability": "متوفر: 1"
     },
     {
-      "imagePath": Assetsdata.product2,
+      "imagePath": Assetsdata.product4,
       "title": "Pastart طين إسباني طبيعي 10 كجم",
       "description": "ألوان خزرف قليز",
       "price": "119.00 ر.س",
-      "availability": "متوفر : 1"
+      "availability": "متوفر: 1"
     },
     {
       "imagePath": Assetsdata.product3,
-      "title": "Pastart طين إسباني طبيعي 10 كجم",
+      "title": "طلاء خرافي Calcitgelb 9318",
       "description": "ألوان خزرف قليز",
       "price": "119.00 ر.س",
-      "availability": "متوفر : 1"
+      "availability": "متوفر: 1"
+    },
+    {
+      "imagePath": Assetsdata.product1,
+      "title": "طلاء خرافي Calcitgelb 9318",
+      "description": "ألوان خزرف قليز",
+      "price": "119.00 ر.س",
+      "availability": "متوفر: 1"
     },
   ];
   @override
@@ -58,79 +64,83 @@ class _HomeBodyState extends State<HomeBody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: homebackgroundColor,
-      body: Container(
-        padding: EdgeInsets.only(top: 120),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Text(
-              "منتجاتي   ",
-              style: TextStyle(fontWeight: FontWeight.w900, fontSize: 30),
-            ),
-         
-            Container(
-              margin: EdgeInsets.all(10),
-              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 15),
-              decoration: BoxDecoration(
-                color: allWidgetBackgroundColor,
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Column(
-                children: [
-                  CustomTextformfiled(),
-                  SizedBox(height: 10),
-                  Column(
+        backgroundColor: homebackgroundColor,
+        body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          physics: BouncingScrollPhysics(),
+          child: Container(
+            padding: EdgeInsets.only(top: 120),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  "منتجاتي   ",
+                  style: TextStyle(fontWeight: FontWeight.w900, fontSize: 30),
+                ),
+                SizedBox(height: 20),
+                Container(
+                  margin: EdgeInsets.all(10),
+                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+                  decoration: BoxDecoration(
+                    color: allWidgetBackgroundColor,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Column(
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          CustomDrawButton(
-                              selectValue: selectedValue1, itemList: itemList1),
-                          CustomDrawButton(
-                              selectValue: selectedValue2, itemList: itemList2),
-                        ],
-                      ),
+                      CustomTextformfiled(),
                       SizedBox(height: 10),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      Column(
                         children: [
-                          CustomDrawButton(
-                              selectValue: selectedValue3, itemList: itemList3),
-                          CustomDrawButton(
-                              selectValue: selectedValue4, itemList: itemList4),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              CustomDrawButton(
+                                  selectValue: selectedValue1,
+                                  itemList: itemList1),
+                              CustomDrawButton(
+                                  selectValue: selectedValue2,
+                                  itemList: itemList2),
+                            ],
+                          ),
+                          SizedBox(height: 10),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              CustomDrawButton(
+                                  selectValue: selectedValue3,
+                                  itemList: itemList3),
+                              CustomDrawButton(
+                                  selectValue: selectedValue4,
+                                  itemList: itemList4),
+                            ],
+                          )
                         ],
                       )
                     ],
-                  )
-                ],
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              height: 450,
-              child: GridView.builder(
-                itemCount: products.length, 
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, 
-                  crossAxisSpacing: 10, 
-                  mainAxisSpacing: 10, 
-                  childAspectRatio: 0.5,
+                  ),
                 ),
-                itemBuilder: (context, index) {
-                  return CustomCardWidget(
-                    imagePath: products[index]["imagePath"]!,
-                    title: products[index]["title"]!,
-                    description: products[index]["description"]!,
-                    price: products[index]["price"]!,
-                    availability: products[index]["availability"]!,
-                  );
-                },
-              ),
-            )
-          ],
-        ),
-      ),
-    );
+                Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: GridView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 10,
+                          crossAxisSpacing: 10,
+                          childAspectRatio: 0.57),
+                      itemCount: products.length,
+                      itemBuilder: (context, index) => CustomCardWidget(
+                        imagePath: products[index]["imagePath"]!,
+                        title: products[index]["title"]!,
+                        description: products[index]["description"]!,
+                        price: products[index]["price"]!,
+                        availability: products[index]["availability"]!,
+                      ),
+                    ))
+              ],
+            ),
+          ),
+        ));
   }
 }
